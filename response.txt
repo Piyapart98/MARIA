@@ -1,0 +1,55 @@
+
+    What is the role of the signal converter, signal processor and microprocessor in ZMQ? 
+
+    The signal converter, signal processor, and microprocessor are components of the measuring system in ZMQ. 
+
+The signal converter guides the three analogue single-phase values to the analogue-digital converter (Source: ZMQ Functional Description.pdf, page 27). It multiplexes the signals from the three-phase voltage input and current input.
+
+The signal processor scans the digital input values every 0.2 seconds and calculates the digital output values (Source: ZMQ Functional Description.pdf, page 62). The meter is calibrated in the signal processor with small digital correction values.
+
+The microprocessor reads the digital output values from the output buffer of the signal processor every 0.2 seconds (Source: ZMQ Functional Description.pdf, page 27).
+
+In summary, the signal converter prepares the analogue signals for conversion to digital values, the signal processor processes and calculates the digital output values, and the microprocessor receives and stores these calculated values.
+
+Sources:
+ZMQ Functional Description.pdf, page 26
+ZMQ Functional Description.pdf, page 62
+ZMQ Functional Description.pdf, page 27
+
+    Retrieved source:
+
+    ZMQ Functional Description.pdf, page 26
+ZMQ Functional Description.pdf, page 62
+ZMQ Functional Description.pdf, page 27
+ZMQ Functional Description.pdf, page 96
+ZMQ Functional Description.pdf, page 98
+    Generate time: 130.64
+
+    **********
+    
+    What is the role of the signal converter, signal processor and microprocessor in ZMQ? 
+
+    The signal converter, signal processor, and microprocessor are the three main components that work together to process and analyze the electrical signals in the ZMQ measuring system.
+
+According to the provided context, the signal converter (Section 2.4 on page 27) is responsible for guiding the analogue single-phase values in a successive order to the analogue-digital converter. It also digitizes the analogue values of voltage and current using analogue-digital converters.
+
+The signal processor (Section 2.4 on page 28) scans the digital input values of voltage and current every 0.2 seconds, calculates the digital output values, and stores them in the output buffer. The microprocessor reads the digital output values from the output buffer every 0.2 seconds and makes the measured quantities available at the output.
+
+In summary, the signal converter prepares the analogue signals for digitization, the signal processor processes and analyzes the digital signals, and the microprocessor executes the calculated values and provides the final output.
+
+Sources:
+
+* ZMQ Functional Description.pdf, page 27
+* ZMQ Functional Description.pdf, page 28
+
+    Retrieved source:
+
+    ZMQ Functional Description.pdf, page 27
+ZMQ Functional Description.pdf, page 63
+ZMQ Functional Description.pdf, page 28
+ZMQ Functional Description.pdf, page 97
+ZMQ Functional Description.pdf, page 99
+    Generate time: 125.08
+
+    **********
+    
