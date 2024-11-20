@@ -61,13 +61,12 @@ print("Vector store is loaded.")
 retriever = vectorstore.as_retriever(search_type="similarity", search_kwargs={"k": 5})
 # return a list of k page (class langchain_core.documents.base.Document)
 
-# Create a prompt for LLM
 template = '''
-You are an assistant for question-answering tasks. Use the following pieces of retrieved context and sources to answer the asked question only. If you don't know the answer, say that you don't know.
-<context>
-{context}
-</context>
-Answer the following question and include all sources at the end of your respond (in format of xxx.pdf and page):
+The following context contain source (PDF file name and page) and content inside, which are relevant technical details for answering the user's question. \n
+CONTENT:\n
+{context} \n
+Answer the following question concisely and include all the relevant sources that you use at the end of the response in a form <filename, page> because these are the only sources available for the users. If the materials are not relevant or complete enough to confidently answer the user’s question, your best response is “the materials do not appear to be sufficient to provide a good answer.” \n
+QUESTION: \n
 {question}
 '''
 prompt = ChatPromptTemplate.from_template(template)
@@ -118,7 +117,7 @@ query = ['What is the role of the signal converter, signal processor and micropr
 'What are the key features of Tesla electric cars?',
 'What are the health benefits of a Mediterranean diet?',
 'How does 5G technology differ from 4G?']
-
+total_time = 0
 for q in query:
     print(f"{q}\n")
     response, generate_time = generate_response(q)
@@ -130,11 +129,15 @@ for q in query:
     output_text = f'''
     {q} \n
     {response}\n
-    Retrieved source:\n
-    {sources}
-    Generate time: {generate_time:.2f}\n
+    Retrieved source:
+    {sources}\n
+    Generate time: {generate_time:.2f} seconds\n
     **********
     '''
-    with open('response.txt', 'a') as file:
+    with open('response.txt', 'a', encoding='utf-8') as file:
         file.write(output_text)
-
+    total_time += generate_time
+average_time = total_time / len(query)
+print(f'Average time: {f:.2f} seconds')
+with open('response.txt', 'a') as file:
+    file.write('Average time: {f:.2f} seconds')
