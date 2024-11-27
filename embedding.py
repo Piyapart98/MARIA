@@ -18,6 +18,7 @@ Created date: 19 November 2024
 async def extract_text_from_pdfs(folder_path):
     pages = []
     for file_name in os.listdir(folder_path):
+        
         if file_name.endswith(".pdf"):
             file_path = os.path.join(folder_path, file_name)
             try:
